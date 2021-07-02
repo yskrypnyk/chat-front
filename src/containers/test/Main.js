@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Main = (props) => {
     return (
@@ -7,10 +8,10 @@ const Main = (props) => {
                 <h1>Main</h1>
                 <div>
                     <div style={{marginTop:10, marginBottom:10}}>
-                        <a style={{borderRadius: "25px"}} href={"/login"}>Login</a>
+                        <Link style={{borderRadius: "25px"}} to={"/login"}>Login</Link>
                     </div>
                     <div>
-                        <a style={{borderRadius: "25px"}} href={"/chat"}>Chat</a>
+                        <Link style={{borderRadius: "25px"}} to={"/chat"}>Chat</Link>
                     </div>
                 </div>
             </div>

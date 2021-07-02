@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Yii2WebSockets from "../../libs/yiisockets-core";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Chat = (props) => {
 
@@ -8,8 +9,9 @@ const Chat = (props) => {
     const api = useSelector(state => state.api);
 
     useEffect(()=>{
-        // sockets()
-    })
+        console.log(api)
+        sockets()
+    },[])
 
     function sockets () {
         let login_tokens = {'login-token': api.authToken, 'connection-type': 'user'};
@@ -17,7 +19,7 @@ const Chat = (props) => {
 
         _ws.connect(api.socketAddress, api.socketPort, api.socketMode, api.socketRoute);
 
-        _ws.addAction('new-message', function (data) {
+        _ws.addAction('get-new-text', function (data) {
             console.log(data)
         });
 
@@ -26,14 +28,15 @@ const Chat = (props) => {
 
     function sendMessage () {
         let userId = api.userId;
-        ws.socketSend('users/send-message', {'userId': userId});
+        ws.socketSend('chat/test', {'text': userId});
     }
 
 
     return (
         <div>
             <h1>Chat</h1>
-            <a style={{borderRadius: "25px"}} href={"/"}>Back</a>
+            <button onClick={()=>sendMessage()}>adad</button>
+            <Link style={{borderRadius: "25px"}} to={"/"}>Back</Link>
         </div>
     )
 }

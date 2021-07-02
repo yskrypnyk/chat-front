@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setAuthTokens, setAuthType, setUserId, setUserName} from "../../redux/actions";
 import axios from "axios";
 import stringify from "qs-stringify";
+import {Link} from "react-router-dom";
 
 const Login = (props) => {
 
@@ -68,7 +69,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <a style={{borderRadius: "25px"}} href={"/"}>Back</a>
+            <Link style={{borderRadius: "25px"}} to={"/"}>Back</Link>
             <br/>
             <button onClick={()=>loginAsRobert()}>Robert</button>
             <button onClick={()=>loginAsBobert()}>Bobert</button>
