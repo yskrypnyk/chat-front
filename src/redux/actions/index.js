@@ -2,8 +2,14 @@ import {
     SET_AUTH_TOKENS,
     SET_AUTH_TYPE,
     SET_USER_NAME,
-    SET_USER_ID
+    SET_USER_ID,
+    SET_SITE_THEME
 } from "./actionTypes";
+
+export const setSiteTheme = (data) => ({
+    type: SET_SITE_THEME,
+    data: data
+})
 
 export const setAuthTokens = (data) => ({
     type: SET_AUTH_TOKENS,

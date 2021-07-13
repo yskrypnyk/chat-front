@@ -1,5 +1,5 @@
 import {SET_AUTH_TOKENS, SET_AUTH_TYPE, SET_USER_ID, SET_USER_NAME} from "../actions/actionTypes";
-const IS_DEV = true;
+const IS_DEV = false;
 let startAddress = 'https://';
 let cleanAddress = '';
 let socketAddress = '';
@@ -8,15 +8,19 @@ let socketMode = '';
 let socketRoute = '';
 
 if(!IS_DEV) {
-    cleanAddress = '';
+    startAddress = 'https://';
+    cleanAddress = 'chat.vallsoft.com';
+    socketAddress = 'chat.vallsoft.com';
+    socketPort = '443';
+    socketMode = 'wss';
+    socketRoute = 'wss';
 } else {
     startAddress = 'http://';
     cleanAddress = 'localhost:8080';
     socketAddress = 'localhost';
-    socketPort = '8088';
+    socketPort = '8089';
     socketMode = 'ws';
     socketRoute = '';
-
 }
 
 const initialState = {
