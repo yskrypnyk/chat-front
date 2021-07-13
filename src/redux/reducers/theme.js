@@ -1,7 +1,7 @@
 import {SET_SITE_THEME} from "../actions/actionTypes";
 
 const initialState = {
-    isDarkTheme: false
+    siteTheme: 'light'
 };
 
 const theme = (state = initialState, action) => {

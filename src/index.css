@@ -11,3 +11,136 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bodyDiv{
+  height: 100%;
+}
+
+.topBorder {
+  border-top: solid 1px #afb0b4;
+  width: 300px;
+}
+
+.chatsMenu{
+  height: 100vh;
+  width: 650px;
+
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 40px;
+  padding-left: 20px;
+
+  background: transparent;
+}
+
+.chatElement{
+  width: 450px;
+  height: 75px;
+
+  margin: 15px;
+  padding-left: 15px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: #fff;
+  border-radius: 7px;
+}
+
+.chatElement:hover{
+  cursor: pointer;
+}
+
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 0px 7px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box-shadow:hover {
+  box-shadow: rgba(133, 139, 210, 0.8) 1px 1px 7px;
+}
+
+.chatImage{
+  margin-right: 15px;
+}
+
+.chatWindow{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.chatPageContainer{
+  display: flex;
+}
+
+.messageBlock{
+  margin-left: 200px;
+  width: 100%;
+  padding-bottom: 50px;
+  max-height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.activeChat{
+  position: relative;
+  max-height: 850px;
+}
+
+.inputBox{
+  position: absolute;
+  bottom: 15px;
+  left: 100px;
+}
+
+.textInput{
+  width: 700px;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 0px 7px;
+  font-size: 15px;
+  padding: 0 15px;
+}
+
+.sendButton{
+  position: absolute;
+  bottom: 25px;
+  right: 150px;
+}
+
+.messageContainer{
+  margin-top: 30px;
+  background: #eeecf0;
+  width: 700px;
+  border-radius: 15px;
+  min-height: 90px;
+  padding: 5px 30px;
+}
+
+.myMessage{
+  background: #317ef6;
+  color: #fff;
+}
+
+.light-body {
+  background: #faf9fc;
+}
+
+.dark-body {
+  background: #1e2738;
+}

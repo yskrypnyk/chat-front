@@ -1,5 +1,5 @@
 import {SET_AUTH_TOKENS, SET_AUTH_TYPE, SET_USER_ID, SET_USER_NAME} from "../actions/actionTypes";
-const IS_DEV = false;
+const IS_DEV = true;
 let startAddress = 'https://';
 let cleanAddress = '';
 let socketAddress = '';
