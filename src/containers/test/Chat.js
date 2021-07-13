@@ -6,11 +6,6 @@ import stringify from "qs-stringify";
 
 const Chat = (props) => {
 
-    const userId = 1;
-    const userToken = 'swCcYzQUwSDH44-mNW9pcJZaLs2_ruP-' //Local Robert
-
-    let chatId
-
     const [ws, setWs] = useState('')
     const [text, setText] = useState('')
     const [chats, setChats] = useState([])
@@ -20,10 +15,11 @@ const Chat = (props) => {
 
     const api = useSelector(state => state.api);
     const theme = useSelector(state => state.theme);
+    const userId = api.userId;
+    const userToken = api.authToken
 
     useEffect(() => {
         sockets()
-        console.log(api.address)
         getAvailableChats()
     }, [])
 
