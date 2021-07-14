@@ -8,6 +8,7 @@ import Main from "./containers/containers/Main";
 import Login from "./containers/containers/Login";
 import Chat from "./containers/containers/Chat";
 import Register from "./containers/containers/Register";
+import Settings from "./containers/containers/Settings";
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
                         <Route exact path='/' component={Main}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/registration" component={Register}/>
+                        <Route exact path="/chat" component={Chat}/>
+                        <Route exact path="/settings" component={Settings}/>
                         <Route exact path="/chat" component={Chat}/>
                         <Route path="*">
                             <PageNotFound/>

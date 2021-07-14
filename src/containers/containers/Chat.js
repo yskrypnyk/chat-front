@@ -3,6 +3,7 @@ import Yii2WebSockets from "../../libs/yiisockets-core";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import stringify from "qs-stringify";
+import {Redirect} from "react-router-dom";
 
 const Chat = (props) => {
 
@@ -15,6 +16,8 @@ const Chat = (props) => {
 
     const api = useSelector(state => state.api);
     const theme = useSelector(state => state.theme);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(api.userId)
     const userId = api.userId;
     const userToken = api.authToken
 
@@ -78,7 +81,7 @@ const Chat = (props) => {
     }
 
     function subscribeToChat(chat) {
-        setCurrentChat({id:chat.id, name:chat.name})
+        setCurrentChat({id: chat.id, name: chat.name})
         ws.socketSend('chat/subscribe-chat', {'chat_id': chat.id});
         getChatData(chat.id)
     }
@@ -113,10 +116,9 @@ const Chat = (props) => {
         for (let key in chatsArr) {
             chat = chatsArr[key]
             divArr.push(
-                <div className={'chatElement box-shadow'}
+                <div className={'chatElement box-shadow '+theme.siteTheme}
                      onClick={() => subscribeToChat(chat)}
                 >
-                    <div className={'chatImage'}><p>chatImg</p></div>
                     <div><p>{chat.name}</p></div>
                 </div>
             )
@@ -130,7 +132,7 @@ const Chat = (props) => {
         for (let key in messages) {
             obj = messages[key]
             divArr.push(
-                <div className={ (userId == obj.sender_id ? "myMessage " : '') + 'messageContainer'}>
+                <div className={(userId == obj.sender_id ? "myMessage " : '') + 'messageContainer ' + theme.siteTheme}>
                     <p style={{color: "#afb0b4", fontSize: "12px"}}>{obj.sender_name}</p>
                     <div><p style={{fontSize: "15px"}}>{obj.message}</p></div>
                 </div>
@@ -140,63 +142,52 @@ const Chat = (props) => {
         return divArr
     }
 
-    return (
-        <div className={'chatPageContainer'}>
-            <div className={"chatsMenu"}>
-                <p style={{color: "#afb0b4", fontSize: "25px"}}>Available Chats</p>
-                <div className={'topBorder'}>
+    if (isLoggedIn) {
+        return (
+            <div className={'chatPageContainer'}>
+                <div className={"chatsMenu"}>
+                    <p style={{color: "#afb0b4", fontSize: "25px"}}>Available Chats</p>
+                    <div className={'topBorder'}>
+                    </div>
+                    {renderChats(chats)}
                 </div>
-                {renderChats(chats)}
-            </div>
-            <div className={'activeChat'}>
-                {subscribed ? (
-                    <>
-                        <div className={'chatWindow'}>
-                            <p style={{color: "#afb0b4", fontSize: "25px"}}>{currentChat.name}</p>
-                            <div className={'topBorder'}>
+                <div className={'activeChat'}>
+                    {subscribed ? (
+                        <>
+                            <div className={'chatWindow'}>
+                                <p style={{color: "#afb0b4", fontSize: "25px"}}>{currentChat.name}</p>
+                                <div className={'topBorder'}>
+                                </div>
+                                <div className={'messageBlock'}>
+                                    {renderMessages(messages)}
+                                </div>
                             </div>
-                            <div className={'messageBlock'}>
-                                {renderMessages(messages)}
+                            <div className="inputBox">
+                                <input
+                                    className={'textInput'}
+                                    placeholder={"Write something"}
+                                    type="text"
+                                    value={text}
+                                    onChange={
+                                        (event) => {
+                                            setText(event.target.value)
+                                        }}/>
                             </div>
-                        </div>
-                        <div className="inputBox">
-                            <input
-                                className={'textInput'}
-                                placeholder={"Write something"}
-                                type="text"
-                                value={text}
-                                onChange={
-                                    (event) => {
-                                        setText(event.target.value)
-                                    }}/>
-                        </div>
-                        <div className={'sendButton'}>
-                            <button onClick={() => sendMessage()}>Send</button>
-                        </div>
-                    </>
-                ) : (
-                    <>
+                            <div className={'sendButton'}>
+                                <button onClick={() => sendMessage()}>Send</button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
 
-                    </>
-                )}
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
-        // <div>
-        //     <h1>Chat as {api.userName}</h1>
-        //     <div>
-        //         <input type="text" onChange={(event)=>{
-        //             setText(event.target.value)
-        //         }}/>
-        //     </div>
-        //     <div>
-        //         <button onClick={()=>sendMessage()}>send message</button>
-        //     </div>
-        //     <div>
-        //         <button onClick={()=>subscribeToChat(chatId)}>subscribe to chat</button>
-        //     </div>
-        //     <Link style={{borderRadius: "25px"}} to={"/"}>Back</Link>
-        // </div>
-    )
+        )
+    } else {
+        return <Redirect to={''}/>
+    }
 }
 
 export default (Chat);

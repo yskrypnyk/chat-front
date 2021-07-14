@@ -1,7 +1,9 @@
 import {SET_SITE_THEME} from "../actions/actionTypes";
 
+const localTheme = localStorage.getItem("site_theme")
+
 const initialState = {
-    siteTheme: 'light'
+    siteTheme: localTheme ? localTheme : "light"
 };
 
 const theme = (state = initialState, action) => {

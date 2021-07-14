@@ -34,7 +34,7 @@ const Register = (props) => {
                     dispatch(setAuthTokens(event.data.token));
                     dispatch(setUserId("" + event.data.id));
                     dispatch(setUserName("" + event.data.name));
-                    setIsLoggedIn(true)
+                    window.location.reload(false);
                 } else {
                     console.log(event.warning)
                 }

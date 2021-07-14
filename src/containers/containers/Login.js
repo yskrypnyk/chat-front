@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setAuthTokens, setAuthType, setUserId, setUserName} from "../../redux/actions";
 import axios from "axios";
@@ -32,7 +32,7 @@ const Login = (props) => {
                     dispatch(setAuthTokens(event.data.token));
                     dispatch(setUserId("" + event.data.id));
                     dispatch(setUserName("" + event.data.name));
-                    setIsLoggedIn(true)
+                    window.location.reload(false);
                 } else {
                     console.log(event.warning)
                 }
@@ -60,6 +60,7 @@ const Login = (props) => {
                     dispatch(setAuthTokens(event.data.token));
                     dispatch(setUserId("" + event.data.id));
                     dispatch(setUserName("" + event.data.name));
+                    window.location.reload(false);
                 } else {
                     console.log(event.warning)
                 }
@@ -87,6 +88,7 @@ const Login = (props) => {
                     dispatch(setAuthTokens(event.data.token));
                     dispatch(setUserId("" + event.data.id));
                     dispatch(setUserName("" + event.data.name));
+                    window.location.reload(false);
                 } else {
                     console.log(event.warning)
                 }
