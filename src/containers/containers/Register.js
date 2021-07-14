@@ -8,6 +8,7 @@ import {Link, Redirect} from "react-router-dom";
 const Register = (props) => {
 
     const api = useSelector(state => state.api);
+    const theme = useSelector(state => state.theme);
     const dispatch = useDispatch();
 
     const [username, setUsername] = useState("")
@@ -55,7 +56,7 @@ const Register = (props) => {
                 alignItems:"center",
                 width:"87%"
             }}>
-                <h1>Register</h1>
+                <h1 className={theme.siteTheme+"-text"}>Register</h1>
 
                 <div className={'loginForm'}>
                     <input

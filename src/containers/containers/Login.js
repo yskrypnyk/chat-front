@@ -8,6 +8,7 @@ import {Link, Redirect} from "react-router-dom";
 const Login = (props) => {
 
     const api = useSelector(state => state.api);
+    const theme = useSelector(state => state.theme);
     const dispatch = useDispatch();
 
     const [username, setUsername] = useState("")
@@ -109,7 +110,7 @@ const Login = (props) => {
                 alignItems:"center",
                 width:"87%"
             }}>
-                <h1>Login</h1>
+                <h1 className={theme.siteTheme+"-text"}>Login</h1>
 
                 <div className={'loginForm'}>
                     <input

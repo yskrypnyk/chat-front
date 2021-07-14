@@ -1,6 +1,8 @@
 import React from "react";
+import {useSelector} from "react-redux";
 
 const Main = (props) => {
+    const theme = useSelector(state => state.theme);
     return (
         <div style={{
             display:"flex",
@@ -8,7 +10,7 @@ const Main = (props) => {
             alignItems:"center",
             width:"87%"
         }}>
-            <h1>
+            <h1 className={theme.siteTheme+"-text"}>
                 Welcome to WebChat
             </h1>
         </div>

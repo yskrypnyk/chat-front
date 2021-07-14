@@ -81,6 +81,7 @@ const Chat = (props) => {
     }
 
     function subscribeToChat(chat) {
+        setMessages([])
         setCurrentChat({id: chat.id, name: chat.name})
         ws.socketSend('chat/subscribe-chat', {'chat_id': chat.id});
         getChatData(chat.id)
@@ -115,9 +116,10 @@ const Chat = (props) => {
         let chat
         for (let key in chatsArr) {
             chat = chatsArr[key]
+            let currentChat = chat
             divArr.push(
                 <div className={'chatElement box-shadow '+theme.siteTheme}
-                     onClick={() => subscribeToChat(chat)}
+                     onClick={() => subscribeToChat(currentChat)}
                 >
                     <div><p>{chat.name}</p></div>
                 </div>
