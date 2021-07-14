@@ -13,7 +13,7 @@ const theme = (state = initialState, action) => {
             localStorage.setItem("site_theme", action.data);
             return {
                 ...state,
-                isDarkTheme: action.data
+                siteTheme: action.data
             };
         }
         default:

@@ -32,9 +32,17 @@ const DashboardLayout = (props) => {
                             <NavLink
                                 activeClassName={'menu-active ' + theme.siteTheme}
                                 className={'menuLink ' + theme.siteTheme}
-                                to={"/chat-create"}
+                                to={"/create-chat"}
                             >
                                 Create Chat
+                            </NavLink>
+
+                            <NavLink
+                                activeClassName={'menu-active ' + theme.siteTheme}
+                                className={'menuLink ' + theme.siteTheme}
+                                to={"/manage-members"}
+                            >
+                                Manage members
                             </NavLink>
 
                             <NavLink

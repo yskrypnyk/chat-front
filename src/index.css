@@ -35,9 +35,21 @@ code {
 .light-text{
   color: #3c4666;
 }
-
 .dark-text{
   color: #ebebeb;
+}
+
+.light-text.success{
+  color: #6EA216;
+}
+.dark-text.success{
+  color: #7BB418;
+}
+.light-text.warning{
+  color: #FD6749;
+}
+.dark-text.warning{
+  color: #FD5635;
 }
 
 /*CHAT*/
@@ -313,5 +325,50 @@ code {
 
 #toggle:checked ~ label .slide {
     transform: translateX(25px) scale(.9);
-    box-shadow: inset 3px 0 0 #ddd;
+    box-shadow: inset 3px 0 0 #3B83F7;
+}
+
+/*MEMBERS*/
+.membersBlock{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  max-height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.userElement{
+  width: 100px;
+  height: 75px;
+
+  margin: 15px 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 7px;
+}
+.userElement.light{
+  background: #3E6CB7;
+  color: #fff;
+}
+.userElement.dark{
+  background: #F5F5F5;
+  color: #000;
+}
+.userElement:hover{
+  background: #FD5635;
+}
+.userElement.box-shadow:hover{
+  box-shadow: rgba(253, 86, 53, 0.8) 1px 1px 7px;
+}
+
+.userElement.add:hover{
+  background: #7BB418;
+}
+.userElement.add.box-shadow:hover{
+  box-shadow: rgba(123, 180, 24, 0.8) 1px 1px 7px;
 }

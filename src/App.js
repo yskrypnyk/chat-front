@@ -9,6 +9,8 @@ import Login from "./containers/containers/Login";
 import Chat from "./containers/containers/Chat";
 import Register from "./containers/containers/Register";
 import Settings from "./containers/containers/Settings";
+import CreateChat from "./containers/containers/CreateChat";
+import ManageMembers from "./containers/containers/ManageMembers";
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
                         <Route exact path="/chat" component={Chat}/>
                         <Route exact path="/settings" component={Settings}/>
                         <Route exact path="/chat" component={Chat}/>
+                        <Route exact path="/create-chat" component={CreateChat}/>
+                        <Route exact path="/manage-members" component={ManageMembers}/>
                         <Route path="*">
                             <PageNotFound/>
                         </Route>
