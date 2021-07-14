@@ -7,6 +7,11 @@ let socketPort = '';
 let socketMode = '';
 let socketRoute = '';
 
+let localToken = localStorage.getItem("token");
+let localUserName = localStorage.getItem("userName");
+let localUserId = localStorage.getItem("userId");
+
+
 if(!IS_DEV) {
     startAddress = 'https://';
     cleanAddress = 'chat.vallsoft.com';
@@ -24,10 +29,9 @@ if(!IS_DEV) {
 }
 
 const initialState = {
-    authToken: '',
-    authType: '',
-    userName: '',
-    userId: '',
+    authToken: localToken ? localToken : "",
+    userName: localUserName ? localUserName : "",
+    userId: localUserId ? localUserId : "",
     address:  startAddress+cleanAddress+'/api',
     cleanAddress: startAddress+cleanAddress,
     socketAddress : socketAddress,
