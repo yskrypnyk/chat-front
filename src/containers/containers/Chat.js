@@ -80,6 +80,13 @@ const Chat = (props) => {
         });
     }
 
+    function addMessages(data){
+        //TODO - fix
+        let array = messages
+        array.push(data)
+        setMessages(array)
+    }
+
     function subscribeToChat(chat) {
         setMessages([])
         setCurrentChat({id: chat.id, name: chat.name})
@@ -94,7 +101,7 @@ const Chat = (props) => {
         _ws.connect(api.socketAddress, api.socketPort, api.socketMode, api.socketRoute);
         //action to listen
         _ws.addAction('new-message', function (data) {
-            console.log(data)
+            addMessages(data)
         });
         _ws.addAction('status', function (data) {
             console.log(data)
@@ -106,7 +113,6 @@ const Chat = (props) => {
         let userId = api.userId;
         //action to trigger
         ws.socketSend('chat/send', {'text': text, 'user_id': userId, 'chat_id': currentChat.id});
-        getChatData(currentChat.id)
         setText('')
 
     }
