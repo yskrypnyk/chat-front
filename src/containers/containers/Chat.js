@@ -80,11 +80,8 @@ const Chat = (props) => {
         });
     }
 
-    function addMessages(data){
-        //TODO - fix
-        let array = messages
-        array.push(data)
-        setMessages(array)
+    function getMessagesForSockets(){
+        return messages
     }
 
     function subscribeToChat(chat) {
@@ -101,7 +98,7 @@ const Chat = (props) => {
         _ws.connect(api.socketAddress, api.socketPort, api.socketMode, api.socketRoute);
         //action to listen
         _ws.addAction('new-message', function (data) {
-            addMessages(data)
+            getChatData(data.chat_id)
         });
         _ws.addAction('status', function (data) {
             console.log(data)
